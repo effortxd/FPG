@@ -590,10 +590,58 @@ document.addEventListener('mousemove', function(e){
 });
 
 // ── Form submit
+var ZAPIER_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27023555/unizfn1/';
+
 function submitForm(){
-  var v=[document.getElementById('fname'),document.getElementById('lname'),document.getElementById('femail'),document.getElementById('fphone'),document.getElementById('fexp'),document.getElementById('finterest')];
-  for(var i=0;i<v.length;i++){if(!v[i].value.trim()){alert('Please fill in all fields to continue.');return;}}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v[2].value)){alert('Please enter a valid email address.');return;}
+  var fname    = document.getElementById('fname').value.trim();
+  var lname    = document.getElementById('lname').value.trim();
+  var email    = document.getElementById('femail').value.trim();
+  var phone    = document.getElementById('fphone').value.trim();
+  var exp      = document.getElementById('fexp').value;
+  var interest = document.getElementById('finterest').value;
+
+  if(!fname||!lname||!email||!phone||!exp||!interest){
+    alert('Please fill in all fields to continue.'); return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please enter a valid email address.'); return;
+  }
+
+  var btn = document.querySelector('.form-submit');
+  btn.textContent = 'Submitting...';
+  btn.disabled = true;
+
+  var payload = JSON.stringify({
+    first_name:   fname,
+    last_name:    lname,
+    email:        email,
+    phone:        phone,
+    experience:   exp,
+    interest:     interest,
+    source:       'FPG Landing Page',
+    submitted_at: new Date().toISOString()
+  });
+
+  // sendBeacon is the most reliable cross-origin method for static/hosted pages
+  var sent = false;
+  if(navigator.sendBeacon){
+    var blob = new Blob([payload], {type:'text/plain'});
+    sent = navigator.sendBeacon(ZAPIER_WEBHOOK, blob);
+  }
+
+  // Fallback: XHR with no-cors equivalent
+  if(!sent){
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', ZAPIER_WEBHOOK, true);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.send(payload);
+  }
+
+  // Always show success — sendBeacon/XHR fire-and-forget by design
+  setTimeout(showSuccess, 400);
+}
+
+function showSuccess(){
   document.getElementById('leadForm').style.display='none';
   document.getElementById('formSuccess').style.display='block';
 }
