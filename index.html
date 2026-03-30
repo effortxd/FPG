@@ -611,34 +611,25 @@ function submitForm(){
   btn.textContent = 'Submitting...';
   btn.disabled = true;
 
-  var payload = JSON.stringify({
-    first_name:   fname,
-    last_name:    lname,
-    email:        email,
-    phone:        phone,
-    experience:   exp,
-    interest:     interest,
-    source:       'FPG Landing Page',
-    submitted_at: new Date().toISOString()
-  });
+  // URLSearchParams sends as application/x-www-form-urlencoded
+  // This is a CORS "simple" request — no preflight, works from any origin
+  var params = new URLSearchParams();
+  params.append('first_name',   fname);
+  params.append('last_name',    lname);
+  params.append('email',        email);
+  params.append('phone',        phone);
+  params.append('experience',   exp);
+  params.append('interest',     interest);
+  params.append('source',       'FPG Landing Page');
+  params.append('submitted_at', new Date().toISOString());
 
-  // sendBeacon is the most reliable cross-origin method for static/hosted pages
-  var sent = false;
-  if(navigator.sendBeacon){
-    var blob = new Blob([payload], {type:'text/plain'});
-    sent = navigator.sendBeacon(ZAPIER_WEBHOOK, blob);
-  }
-
-  // Fallback: XHR with no-cors equivalent
-  if(!sent){
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', ZAPIER_WEBHOOK, true);
-    xhr.setRequestHeader('Content-Type', 'text/plain');
-    xhr.send(payload);
-  }
-
-  // Always show success — sendBeacon/XHR fire-and-forget by design
-  setTimeout(showSuccess, 400);
+  fetch(ZAPIER_WEBHOOK, {
+    method: 'POST',
+    mode:   'no-cors',
+    body:   params
+  })
+  .then(function(){ showSuccess(); })
+  .catch(function(){ showSuccess(); });
 }
 
 function showSuccess(){
