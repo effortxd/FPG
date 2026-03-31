@@ -469,64 +469,69 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,0.08);padding:
 </section>
 
 <!-- LEAD FORM -->
-<section class="form-sec sec" id="claim">
-  <div class="form-inner">
-    <div class="reveal-left">
-      <div class="tag">Limited Slots Available</div>
-      <h2 class="sh2">Get Your Free<br>Account &amp; <em>Start<br>Earning Today</em></h2>
-      <div class="gr"></div>
-      <div class="form-urgency">
-        <div style="font-size:20px;flex-shrink:0">⚡</div>
-        <div class="form-urgency-text"><strong>Don't wait another year.</strong> Traders who started 12 months ago are already withdrawing consistent profits. Your turn starts now.</div>
+<div class="reveal-right">
+  <div class="lead-form" id="leadForm">
+    <div class="lf-title">Claim Your Free Spot Now</div>
+    <div class="lf-sub">Fill in your details. Our team will reach out within <strong>24 hours.</strong></div>
+
+    <div class="fr">
+      <div class="fg">
+        <label class="fl-label">First Name</label>
+        <input class="fi" type="text" placeholder="John" id="fname">
       </div>
-      <div class="form-perks">
-        <div class="form-perk"><div class="form-perk-check"><svg viewBox="0 0 10 10" fill="none" stroke="#C9A264" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg></div><div class="form-perk-text">Free account setup — no deposit required<span>Full platform access the moment you register</span></div></div>
-        <div class="form-perk"><div class="form-perk-check"><svg viewBox="0 0 10 10" fill="none" stroke="#C9A264" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg></div><div class="form-perk-text">Personal 1-on-1 consultation with an FPG expert<span>A custom strategy built specifically for your goals</span></div></div>
-        <div class="form-perk"><div class="form-perk-check"><svg viewBox="0 0 10 10" fill="none" stroke="#C9A264" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg></div><div class="form-perk-text">Access to FPG's professional signal group<span>Real-time trade alerts from our senior analysts</span></div></div>
-        <div class="form-perk"><div class="form-perk-check"><svg viewBox="0 0 10 10" fill="none" stroke="#C9A264" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg></div><div class="form-perk-text">Full structured education — beginner to advanced<span>Get trading profitably in weeks, not years</span></div></div>
+      <div class="fg">
+        <label class="fl-label">Last Name</label>
+        <input class="fi" type="text" placeholder="Doe" id="lname">
       </div>
     </div>
-    <div class="reveal-right">
-      <div class="lead-form" id="leadForm">
-        <div class="lf-title">Claim Your Free Spot Now</div>
-        <div class="lf-sub">Fill in your details. Our team will reach out within <strong>24 hours.</strong></div>
-        <div class="fr">
-          <div class="fg"><label class="fl-label">First Name</label><input class="fi" type="text" placeholder="John" id="fname"></div>
-          <div class="fg"><label class="fl-label">Last Name</label><input class="fi" type="text" placeholder="Doe" id="lname"></div>
-        </div>
-        <div class="fg"><label class="fl-label">Email Address</label><input class="fi" type="email" placeholder="john@email.com" id="femail"></div>
-        <div class="fg"><label class="fl-label">Phone / WhatsApp</label><input class="fi" type="tel" placeholder="+60 12-345 6789" id="fphone"></div>
-        <div class="fg"><label class="fl-label">Trading Experience</label>
-          <select class="fsel" id="fexp">
-            <option value="" disabled selected>Select your level</option>
-            <option>Complete Beginner — Never traded before</option>
-            <option>Some Knowledge — Read about it, haven't started</option>
-            <option>Intermediate — Trading but want better results</option>
-            <option>Experienced — Looking for a regulated broker</option>
-          </select>
-        </div>
-        <div class="fg"><label class="fl-label">I'm Most Interested In</label>
-          <select class="fsel" id="finterest">
-            <option value="" disabled selected>Select an option</option>
-            <option>PAMM / Copy Trading (Passive Income)</option>
-            <option>FPG Elite Entrepreneur Program (IB)</option>
-            <option>FPG Business Academy</option>
-            <option>Signal Group &amp; Education</option>
-            <option>Everything — Tell Me More</option>
-          </select>
-        </div>
-        <button class="form-submit" onclick="submitForm()">Get My Free Account Now →</button>
-        <div class="form-disc">🔒 Your information is 100% confidential. No spam, ever.</div>
-      </div>
-      <div id="formSuccess" style="display:none;background:var(--d2);border:1px solid rgba(201,162,100,0.14);padding:64px 48px;text-align:center">
-        <div style="font-size:52px;margin-bottom:20px">🎉</div>
-        <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:300;color:#fff;margin-bottom:12px">You're In!</div>
-        <div style="font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:28px">Our FPG team will contact you within 24 hours. Keep an eye on your WhatsApp and email.</div>
-        <a href="https://wa.link/8wvpdv" class="btn-red" target="_blank" style="display:inline-block">Chat With Us on WhatsApp →</a>
-      </div>
+
+    <div class="fg">
+      <label class="fl-label">Email Address</label>
+      <input class="fi" type="email" placeholder="john@email.com" id="femail">
+    </div>
+
+    <div class="fg">
+      <label class="fl-label">Phone / WhatsApp</label>
+      <input class="fi" type="tel" placeholder="+60 12-345 6789" id="fphone">
+    </div>
+
+    <div class="fg">
+      <label class="fl-label">Trading Experience</label>
+      <select class="fsel" id="fexp">
+        <option value="" disabled selected>Select your level</option>
+        <option>Complete Beginner — Never traded before</option>
+        <option>Some Knowledge — Read about it, haven't started</option>
+        <option>Intermediate — Trading but want better results</option>
+        <option>Experienced — Looking for a regulated broker</option>
+      </select>
+    </div>
+
+    <div class="fg">
+      <label class="fl-label">I'm Most Interested In</label>
+      <select class="fsel" id="finterest">
+        <option value="" disabled selected>Select an option</option>
+        <option>PAMM / Copy Trading (Passive Income)</option>
+        <option>FPG Elite Entrepreneur Program (IB)</option>
+        <option>FPG Business Academy</option>
+        <option>Signal Group &amp; Education</option>
+        <option>Everything — Tell Me More</option>
+      </select>
+    </div>
+
+    <button class="form-submit" id="submitBtn" onclick="submitForm()">Get My Free Account Now →</button>
+    <div class="form-disc">🔒 Your information is 100% confidential.</div>
+  </div>
+
+  <div class="lead-form" id="formSuccess" style="display:none;">
+    <div class="lf-title">You're In</div>
+    <div class="lf-sub">
+      Thanks for your interest. Our team will contact you within <strong>24 hours.</strong>
+    </div>
+    <div class="form-disc" style="margin-top:0;">
+      Please keep your phone and email available.
     </div>
   </div>
-</section>
+</div>
 
 <!-- REGULATION -->
 <section class="reg-sec sec" id="regulated">
