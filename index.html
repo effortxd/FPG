@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7RR951RH81"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-7RR951RH81');
-</script> 
-
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fortune Prime Global — Start Trading Today</title>
@@ -672,7 +670,8 @@ setInterval(updatePrices,2000);
 
 // ── LANGUAGE SWITCHER ─────────────────────────────────────────────────────
 var currentLang = 'en';
-function setLang(lang){
+
+function setLang(lang, updateURL){
   currentLang = lang;
   document.getElementById('btn-en').classList.toggle('active', lang==='en');
   document.getElementById('btn-es').classList.toggle('active', lang==='es');
@@ -680,7 +679,36 @@ function setLang(lang){
     var txt = el.getAttribute('data-'+lang);
     if(txt) el.innerHTML = txt;
   });
+  // Update <html lang> attribute for accessibility
+  document.documentElement.lang = lang === 'es' ? 'es' : 'en';
+  // Update URL param without reloading the page
+  if(updateURL !== false){
+    var url = new URL(window.location.href);
+    if(lang === 'es'){
+      url.searchParams.set('lang','es');
+    } else {
+      url.searchParams.delete('lang');
+    }
+    window.history.replaceState({}, '', url.toString());
+  }
 }
+
+// Auto-detect ?lang=es on page load
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if(lang === 'es'){
+    // Wait for DOM to be ready then apply
+    var apply = function(){
+      setLang('es', false);
+    };
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', apply);
+    } else {
+      apply();
+    }
+  }
+})();
 
 
 // ── CANDLESTICK CHARTS ────────────────────────────────────────────────────
