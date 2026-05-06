@@ -124,6 +124,15 @@ h1 strong{color:var(--red);font-weight:300}
 .sec-sub{font-size:17px;line-height:1.85;color:var(--muted);max-width:520px}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:60px}
 
+
+/* INDICATOR STAT ROW */
+.ind-stat-row{display:flex;gap:14px;margin-bottom:14px;padding:8px 12px;background:rgba(201,162,100,.06);border:1px solid rgba(201,162,100,.15);border-radius:0}
+.ind-stat-row.hot{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25)}
+.ind-stat{display:flex;flex-direction:column;flex:1}
+.ind-stat strong{font-family:'Playfair Display',serif;font-size:22px;font-weight:300;color:var(--gold2);line-height:1}
+.ind-stat.hot strong{color:#22c55e;font-weight:700;font-family:'Outfit',sans-serif}
+.ind-stat span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+
 /* INDICATOR CARDS */
 .ind-sec{background:var(--black);position:relative;overflow:hidden}
 .ind-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,162,100,.04),transparent 65%);pointer-events:none}
@@ -185,6 +194,26 @@ canvas{display:block;width:100%!important}
 .perk-txt{font-size:14px;color:var(--text);line-height:1.5}
 .perk-txt span{color:var(--muted);font-size:12px;display:block;margin-top:2px}
 
+
+/* LIVE ACTIVITY */
+.live-act{background:linear-gradient(180deg,#0a0a0a,#0f0a06);border-top:1px solid rgba(201,162,100,.1);border-bottom:1px solid rgba(201,162,100,.1);padding:48px 72px;text-align:center}
+.live-hd{display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#22c55e;margin-bottom:28px}
+.live-hd .tc-dot{width:8px;height:8px}
+.live-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1100px;margin:0 auto;border:1px solid rgba(201,162,100,.12);background:rgba(255,255,255,.02)}
+.live-stat{padding:24px 20px;border-right:1px solid rgba(201,162,100,.1)}
+.live-stat:last-child{border-right:none}
+.live-stat-n{font-family:'Playfair Display',serif;font-size:38px;font-weight:300;color:var(--gold2);line-height:1;margin-bottom:6px}
+.live-stat-n.green{color:#22c55e;font-family:'Outfit',sans-serif;font-weight:700}
+.live-stat-l{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:1024px){
+  .live-act{padding:40px 24px}
+  .live-stats{grid-template-columns:1fr 1fr}
+  .live-stat{border-right:none;border-bottom:1px solid rgba(201,162,100,.1)}
+  .live-stat:nth-child(even){border-right:none}
+  .live-stat:nth-child(2n+1){border-right:1px solid rgba(201,162,100,.1)}
+  .live-stat-n{font-size:30px}
+}
+
 /* WHY GRID */
 .why-sec{background:var(--d1)}
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,162,100,.07)}
@@ -224,7 +253,7 @@ canvas{display:block;width:100%!important}
 .cta-sub{font-size:19px;color:rgba(234,228,216,.55);margin:0 auto 56px;position:relative;z-index:1;max-width:560px;line-height:1.7}
 .cta-sub span{color:var(--gold2);font-weight:500}
 .cta-wrap{position:relative;z-index:1}
-.urgency-strip{display:inline-block;background:rgba(200,16,46,.12);border:1px solid rgba(200,16,46,.3);padding:8px 24px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#ef6060;margin-bottom:20px}
+.urgency-strip{display:inline-block;background:rgba(200,16,46,.15);border:1px solid rgba(200,16,46,.4);padding:10px 28px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#ff7878;margin-bottom:20px;font-weight:600}.urgency-strip strong{color:#fff;font-size:16px;background:var(--red);padding:1px 8px;margin:0 3px}
 .cta-trust{display:flex;align-items:center;justify-content:center;gap:32px;margin-top:44px;position:relative;z-index:1;flex-wrap:wrap}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
 .trust-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.6}
@@ -360,14 +389,14 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
 <section class="hero">
   <div class="hero-bg"><div class="orb1"></div><div class="orb2"></div><div class="grid-bg"></div></div>
   <div class="hero-left">
-    <div class="badge"><span class="badge-dot"></span><span data-en="Globally Regulated Broker" data-es="Broker Regulado Globalmente" data-ar="&#1608;&#1587;&#1610;&#1591; &#1605;&#1585;&#1582;&#1589; &#1593;&#1575;&#1604;&#1605;&#1610;&#1575;&#1611;">Globally Regulated Broker</span></div>
+    <div class="badge" style="background:rgba(200,16,46,.1);border-color:rgba(200,16,46,.3);color:#ef6060"><span class="badge-dot" style="background:#ef6060"></span><span data-en="🔥 FREE Signals & Indicators Inside" data-es="🔥 Señales e Indicadores GRATIS" data-ar="🔥 &#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1608;&#1605;&#1572;&#1588;&#1585;&#1575;&#1578; &#1605;&#1580;&#1575;&#1606;&#1610;&#1577;">🔥 FREE Signals &amp; Indicators Inside</span></div>
     <h1>
-      <span data-en="Stop Watching." data-es="Deja de Mirar." data-ar="&#1578;&#1608;&#1602;&#1601; &#1593;&#1606; &#1575;&#1604;&#1605;&#1588;&#1575;&#1607;&#1583;&#1577;.">Stop Watching.</span><br>
-      <em><span data-en="Start Earning." data-es="Empieza a Ganar." data-ar="&#1575;&#1576;&#1583;&#1571; &#1601;&#1610; &#1575;&#1604;&#1603;&#1587;&#1576;.">Start Earning.</span></em><br>
-      <strong><span data-en="Right Now." data-es="Ahora Mismo." data-ar="&#1575;&#1604;&#1570;&#1606; &#1601;&#1608;&#1585;&#1575;&#1611;.">Right Now.</span></strong>
+      <span data-en="Stop Losing." data-es="Deja de Perder." data-ar="&#1578;&#1608;&#1602;&#1617;&#1601; &#1575;&#1604;&#1582;&#1587;&#1575;&#1574;&#1585;.">Stop Losing.</span><br>
+      <em><span data-en="Start Copying" data-es="Empieza a Copiar" data-ar="&#1575;&#1576;&#1583;&#1571; &#1576;&#1606;&#1587;&#1582;">Start Copying</span></em><br>
+      <strong><span data-en="The Pros." data-es="A Los Pros." data-ar="&#1575;&#1604;&#1605;&#1581;&#1578;&#1585;&#1601;&#1610;&#1606;.">The Pros.</span></strong>
     </h1>
-    <p class="hero-sub" data-en="Most people spend years waiting for the right moment to invest." data-es="La mayor&iacute;a de las personas pasan a&ntilde;os esperando el momento correcto para invertir." data-ar="&#1605;&#1593;&#1592;&#1605; &#1575;&#1604;&#1606;&#1575;&#1587; &#1610;&#1602;&#1590;&#1608;&#1606; &#1587;&#1606;&#1608;&#1575;&#1578; &#1601;&#1610; &#1575;&#1606;&#1578;&#1592;&#1575;&#1585; &#1575;&#1604;&#1604;&#1581;&#1592;&#1577; &#1575;&#1604;&#1605;&#1606;&#1575;&#1587;&#1576;&#1577; &#1604;&#1604;&#1575;&#1587;&#1578;&#1579;&#1605;&#1575;&#1585;.">Most people spend years waiting for the right moment to invest.</p>
-    <p class="hero-bold"><span data-en="The right moment is" data-es="El momento correcto es" data-ar="&#1575;&#1604;&#1604;&#1581;&#1592;&#1577; &#1575;&#1604;&#1605;&#1606;&#1575;&#1587;&#1576;&#1577; &#1607;&#1610;">The right moment is</span> <span><span data-en="right now." data-es="ahora mismo." data-ar="&#1575;&#1604;&#1570;&#1606; &#1576;&#1575;&#1604;&#1590;&#1576;&#1591;.">right now.</span></span></p>
+    <p class="hero-sub" data-en="Pro traders pay <strong style='color:var(--gold2)'>$297/month</strong> for premium signals and indicators." data-es="Los traders profesionales pagan <strong style='color:var(--gold2)'>$297/mes</strong> por señales e indicadores premium." data-ar="&#1575;&#1604;&#1605;&#1578;&#1583;&#1575;&#1608;&#1604;&#1608;&#1606; &#1575;&#1604;&#1605;&#1581;&#1578;&#1585;&#1601;&#1608;&#1606; &#1610;&#1583;&#1601;&#1593;&#1608;&#1606; <strong style='color:var(--gold2)'>$297/&#1588;&#1607;&#1585;&#1610;&#1575;&#1611;</strong> &#1604;&#1604;&#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1608;&#1575;&#1604;&#1605;&#1572;&#1588;&#1585;&#1575;&#1578;.">Pro traders pay <strong style="color:var(--gold2)">$297/month</strong> for premium signals and indicators.</p>
+    <p class="hero-bold"><span data-en="You get them all" data-es="T&uacute; los obtienes" data-ar="&#1571;&#1606;&#1578; &#1578;&#1581;&#1589;&#1604; &#1593;&#1604;&#1610;&#1607;&#1575; &#1580;&#1605;&#1610;&#1593;&#1607;&#1575;">You get them all</span> <span><span data-en="100% FREE." data-es="100% GRATIS." data-ar="&#1605;&#1580;&#1575;&#1606;&#1610;&#1577; 100%.">100% FREE.</span></span></p>
     <div class="hero-btn-wrap">
       <button class="big-btn" onclick="openModal()">
         <span data-en="Register Free &mdash; 60 Seconds" data-es="Reg&iacute;strate Gratis &mdash; 60 Segundos" data-ar="&#1587;&#1580;&#1617;&#1604; &#1605;&#1580;&#1575;&#1606;&#1575;&#1611; &mdash; 60 &#1579;&#1575;&#1606;&#1610;&#1577;">Register Free &mdash; 60 Seconds</span>
@@ -376,9 +405,9 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
       <div class="urgency" data-en="No credit card required. Takes less than 60 seconds." data-es="Sin tarjeta de cr&eacute;dito. Menos de 60 segundos." data-ar="&#1604;&#1575; &#1578;&#1581;&#1578;&#1575;&#1580; &#1576;&#1591;&#1575;&#1602;&#1577; &#1575;&#1574;&#1578;&#1605;&#1575;&#1606;. &#1571;&#1602;&#1604; &#1605;&#1606; 60 &#1579;&#1575;&#1606;&#1610;&#1577;.">No credit card required. Takes less than 60 seconds.</div>
     </div>
     <div class="hero-kpis">
-      <div class="kpi"><div class="kpi-n">3<sup>+</sup></div><div class="kpi-l" data-en="Global Licenses" data-es="Licencias Globales" data-ar="&#1578;&#1585;&#1575;&#1582;&#1610;&#1589; &#1593;&#1575;&#1604;&#1605;&#1610;&#1577;">Global Licenses</div></div>
-      <div class="kpi"><div class="kpi-n">24<sup>/7</sup></div><div class="kpi-l" data-en="Auto Trading" data-es="Trading Autom&aacute;tico" data-ar="&#1578;&#1583;&#1575;&#1608;&#1604; &#1570;&#1604;&#1610;">Auto Trading</div></div>
-      <div class="kpi"><div class="kpi-n">$0</div><div class="kpi-l" data-en="To Get Started" data-es="Para Empezar" data-ar="&#1604;&#1604;&#1576;&#1583;&#1621;">To Get Started</div></div>
+      <div class="kpi"><div class="kpi-n">87<sup>%</sup></div><div class="kpi-l" data-en="Avg Signal Win Rate" data-es="Tasa Promedio de &Eacute;xito" data-ar="&#1605;&#1593;&#1583;&#1604; &#1575;&#1604;&#1601;&#1608;&#1586;">Avg Signal Win Rate</div></div>
+      <div class="kpi"><div class="kpi-n">+4,200<sup>pips</sup></div><div class="kpi-l" data-en="Last 30 Days" data-es="&Uacute;ltimos 30 D&iacute;as" data-ar="&#1570;&#1582;&#1585; 30 &#1610;&#1608;&#1605;&#1575;&#1611;">Last 30 Days</div></div>
+      <div class="kpi"><div class="kpi-n">12.4K<sup>+</sup></div><div class="kpi-l" data-en="Active Members" data-es="Miembros Activos" data-ar="&#1571;&#1593;&#1590;&#1575;&#1569; &#1606;&#1588;&#1591;&#1610;&#1606;">Active Members</div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -433,6 +462,7 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
     <div class="ind-card reveal" data-d="1">
       <div class="ind-icon"><svg viewBox="0 0 28 28" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M4 20l5-7 4 4 5-8 6 5"/><circle cx="4" cy="20" r="1.5" fill="#C9A264"/><circle cx="9" cy="13" r="1.5" fill="#C9A264"/><circle cx="13" cy="17" r="1.5" fill="#C9A264"/><circle cx="18" cy="9" r="1.5" fill="#C9A264"/><circle cx="24" cy="14" r="1.5" fill="#C9A264"/></svg></div>
       <div class="free-tag">FREE</div>
+      <div class="ind-stat-row"><span class="ind-stat"><strong>87%</strong> <span data-en="Win Rate" data-es="Tasa de &Eacute;xito" data-ar="&#1605;&#1593;&#1583;&#1604; &#1575;&#1604;&#1601;&#1608;&#1586;">Win Rate</span></span><span class="ind-stat"><strong>2.8x</strong> <span data-en="Avg R:R" data-es="R:R Promedio" data-ar="&#1605;&#1578;&#1608;&#1587;&#1591; R:R">Avg R:R</span></span></div>
       <div class="ind-title" data-en="Smart Trend Indicator" data-es="Indicador de Tendencia" data-ar="&#1605;&#1572;&#1588;&#1585; &#1575;&#1604;&#1575;&#1578;&#1580;&#1575;&#1607; &#1575;&#1604;&#1584;&#1603;&#1610;">Smart Trend Indicator</div>
       <div class="ind-body" data-en="Automatically identifies bullish and bearish trends. Signals entry and exit zones with precision across any timeframe." data-es="Identifica autom&aacute;ticamente tendencias alcistas y bajistas con precisi&oacute;n." data-ar="&#1610;&#1581;&#1583;&#1583; &#1578;&#1604;&#1602;&#1575;&#1574;&#1610;&#1575;&#1611; &#1575;&#1604;&#1575;&#1578;&#1580;&#1575;&#1607;&#1575;&#1578; &#1575;&#1604;&#1589;&#1575;&#1593;&#1583;&#1577; &#1608;&#1575;&#1604;&#1607;&#1575;&#1576;&#1591;&#1577;. &#1610;&#1588;&#1610;&#1585; &#1573;&#1604;&#1609; &#1605;&#1606;&#1575;&#1591;&#1602; &#1575;&#1604;&#1583;&#1582;&#1608;&#1604; &#1608;&#1575;&#1604;&#1582;&#1585;&#1608;&#1580; &#1576;&#1583;&#1602;&#1577;.">Automatically identifies bullish and bearish trends. Signals entry and exit zones with precision across any timeframe.</div>
       <div class="chart-box">
@@ -444,6 +474,7 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
     <div class="ind-card reveal" data-d="2">
       <div class="ind-icon"><svg viewBox="0 0 28 28" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="6" width="5" height="9"/><rect x="10" y="3" width="5" height="15"/><rect x="17" y="8" width="5" height="7"/><line x1="5.5" y1="3" x2="5.5" y2="6"/><line x1="5.5" y1="15" x2="5.5" y2="20"/><line x1="12.5" y1="1" x2="12.5" y2="3"/><line x1="12.5" y1="18" x2="12.5" y2="23"/><line x1="19.5" y1="5" x2="19.5" y2="8"/><line x1="19.5" y1="15" x2="19.5" y2="20"/></svg></div>
       <div class="free-tag">FREE</div>
+      <div class="ind-stat-row"><span class="ind-stat"><strong>92%</strong> <span data-en="Bounce Accuracy" data-es="Precisi&oacute;n de Rebote" data-ar="&#1583;&#1602;&#1577; &#1575;&#1604;&#1575;&#1585;&#1578;&#1583;&#1575;&#1583;">Bounce Accuracy</span></span><span class="ind-stat"><strong>4 TF</strong> <span data-en="Multi-Timeframe" data-es="Multi-Marco" data-ar="&#1571;&#1591;&#1585; &#1586;&#1605;&#1606;&#1610;&#1577; &#1605;&#1578;&#1593;&#1583;&#1583;&#1577;">Multi-Timeframe</span></span></div>
       <div class="ind-title" data-en="Support &amp; Resistance Zones" data-es="Zonas de Soporte y Resistencia" data-ar="&#1605;&#1606;&#1575;&#1591;&#1602; &#1575;&#1604;&#1583;&#1593;&#1605; &#1608;&#1575;&#1604;&#1605;&#1602;&#1575;&#1608;&#1605;&#1577;">Support &amp; Resistance Zones</div>
       <div class="ind-body" data-en="Auto-plots the key price levels the market respects most. Know where price will bounce or break &mdash; before it happens." data-es="Traza autom&aacute;ticamente los niveles de precio clave. Sabe d&oacute;nde rebotar&aacute; o romper&aacute; el precio." data-ar="&#1610;&#1585;&#1587;&#1605; &#1578;&#1604;&#1602;&#1575;&#1574;&#1610;&#1575;&#1611; &#1605;&#1587;&#1578;&#1608;&#1610;&#1575;&#1578; &#1575;&#1604;&#1571;&#1587;&#1593;&#1575;&#1585; &#1575;&#1604;&#1585;&#1574;&#1610;&#1587;&#1610;&#1577;. &#1575;&#1593;&#1585;&#1601; &#1571;&#1610;&#1606; &#1587;&#1610;&#1585;&#1578;&#1583; &#1575;&#1604;&#1587;&#1593;&#1585; &#1571;&#1608; &#1610;&#1582;&#1578;&#1585;&#1602; &mdash; &#1602;&#1576;&#1604; &#1581;&#1583;&#1608;&#1579;&#1607;.">Auto-plots the key price levels the market respects most. Know where price will bounce or break &mdash; before it happens.</div>
       <div class="chart-box">
@@ -455,15 +486,16 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
     <div class="ind-card reveal" data-d="3">
       <div class="ind-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="14"/><polygon points="22 2 15 22 11 14 2 9 22 2"/></svg></div>
       <div class="free-tag">FREE</div>
+      <div class="ind-stat-row hot"><span class="ind-stat hot"><strong>+$12,847</strong> <span data-en="Last 30 Days" data-es="&Uacute;ltimos 30 D&iacute;as" data-ar="&#1570;&#1582;&#1585; 30 &#1610;&#1608;&#1605;&#1575;&#1611;">Last 30 Days</span></span><span class="ind-stat"><strong>4-7</strong> <span data-en="Daily Signals" data-es="Se&ntilde;ales Diarias" data-ar="&#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1610;&#1608;&#1605;&#1610;&#1577;">Daily Signals</span></span></div>
       <div class="ind-title" data-en="Live Signal Alerts" data-es="Alertas de Se&ntilde;ales en Vivo" data-ar="&#1578;&#1606;&#1576;&#1610;&#1607;&#1575;&#1578; &#1575;&#1604;&#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1575;&#1604;&#1605;&#1576;&#1575;&#1588;&#1585;&#1577;">Live Signal Alerts</div>
       <div class="ind-body" data-en="Real-time buy/sell alerts from senior analysts. Precise entry, stop loss, and take profit levels sent to your device 24/7." data-es="Alertas de compra/venta en tiempo real. Niveles precisos de entrada, stop loss y take profit enviados 24/7." data-ar="&#1578;&#1606;&#1576;&#1610;&#1607;&#1575;&#1578; &#1588;&#1585;&#1575;&#1569;/&#1576;&#1610;&#1593; &#1601;&#1608;&#1585;&#1610;&#1577; &#1605;&#1606; &#1603;&#1576;&#1575;&#1585; &#1575;&#1604;&#1605;&#1581;&#1604;&#1604;&#1610;&#1606;. &#1605;&#1587;&#1578;&#1608;&#1610;&#1575;&#1578; &#1583;&#1602;&#1610;&#1602;&#1577; &#1604;&#1604;&#1583;&#1582;&#1608;&#1604; &#1608;&#1608;&#1602;&#1601; &#1575;&#1604;&#1582;&#1587;&#1575;&#1585;&#1577; &#1608;&#1580;&#1606;&#1610; &#1575;&#1604;&#1571;&#1585;&#1576;&#1575;&#1581; &#1578;&#1589;&#1604; &#1604;&#1580;&#1607;&#1575;&#1586;&#1603; 24/7.">Real-time buy/sell alerts from senior analysts. Precise entry, stop loss, and take profit levels sent to your device 24/7.</div>
       <div class="chart-box">
         <div class="chart-bar"><span class="chart-pair">LIVE SIGNALS</span><span style="display:flex;align-items:center;gap:4px;font-size:10px;color:#22c55e;margin-left:auto"><span class="tc-dot"></span>Active</span></div>
         <div class="sig-feed">
-          <div class="sig-row buy"><div class="sig-bd">BUY</div><div class="sig-inf"><span class="sig-pair">XAUUSD</span><span class="sig-time" id="sig-t1">2m ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 2,338.50</span><span class="sig-tp up">TP: 2,356.00</span><span class="sig-sl dn">SL: 2,328.00</span></div><div class="sig-pips">+52 pips</div></div>
-          <div class="sig-row sell"><div class="sig-bd">SELL</div><div class="sig-inf"><span class="sig-pair">EURUSD</span><span class="sig-time">18m ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 1.0862</span><span class="sig-tp up">TP: 1.0831</span><span class="sig-sl dn">SL: 1.0882</span></div><div class="sig-pips">+31 pips</div></div>
-          <div class="sig-row buy"><div class="sig-bd">BUY</div><div class="sig-inf"><span class="sig-pair">GBPJPY</span><span class="sig-time">1h ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 191.24</span><span class="sig-tp up">TP: 191.95</span><span class="sig-sl dn">SL: 190.80</span></div><div class="sig-pips">+71 pips</div></div>
-          <div class="sig-row sell"><div class="sig-bd">SELL</div><div class="sig-inf"><span class="sig-pair">WTIUSD</span><span class="sig-time">2h ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 78.45</span><span class="sig-tp up">TP: 77.80</span><span class="sig-sl dn">SL: 78.90</span></div><div class="sig-pips">+65 pips</div></div>
+          <div class="sig-row buy"><div class="sig-bd">BUY</div><div class="sig-inf"><span class="sig-pair">XAUUSD</span><span class="sig-time" id="sig-t1">2m ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 2,338.50</span><span class="sig-tp up">TP: 2,356.00</span><span class="sig-sl dn">SL: 2,328.00</span></div><div class="sig-pips">+$520</div></div>
+          <div class="sig-row sell"><div class="sig-bd">SELL</div><div class="sig-inf"><span class="sig-pair">EURUSD</span><span class="sig-time">18m ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 1.0862</span><span class="sig-tp up">TP: 1.0831</span><span class="sig-sl dn">SL: 1.0882</span></div><div class="sig-pips">+$310</div></div>
+          <div class="sig-row buy"><div class="sig-bd">BUY</div><div class="sig-inf"><span class="sig-pair">GBPJPY</span><span class="sig-time">1h ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 191.24</span><span class="sig-tp up">TP: 191.95</span><span class="sig-sl dn">SL: 190.80</span></div><div class="sig-pips">+$710</div></div>
+          <div class="sig-row sell"><div class="sig-bd">SELL</div><div class="sig-inf"><span class="sig-pair">WTIUSD</span><span class="sig-time">2h ago</span></div><div class="sig-lvl"><span class="sig-ep">EP: 78.45</span><span class="sig-tp up">TP: 77.80</span><span class="sig-sl dn">SL: 78.90</span></div><div class="sig-pips">+$650</div></div>
         </div>
       </div>
     </div>
@@ -486,19 +518,46 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
   </div>
 </section>
 
+<!-- LIVE ACTIVITY -->
+<section class="live-act">
+  <div class="live-hd reveal">
+    <span class="tc-dot"></span>
+    <span data-en="Live Activity Right Now" data-es="Actividad En Vivo" data-ar="&#1606;&#1588;&#1575;&#1591; &#1605;&#1576;&#1575;&#1588;&#1585; &#1575;&#1604;&#1570;&#1606;">Live Activity Right Now</span>
+  </div>
+  <div class="live-stats reveal">
+    <div class="live-stat">
+      <div class="live-stat-n green" id="ls-traders">3,124</div>
+      <div class="live-stat-l" data-en="Online Right Now" data-es="En L&iacute;nea Ahora" data-ar="&#1605;&#1578;&#1589;&#1604; &#1575;&#1604;&#1570;&#1606;">Online Right Now</div>
+    </div>
+    <div class="live-stat">
+      <div class="live-stat-n green">+$284K</div>
+      <div class="live-stat-l" data-en="Profits This Week" data-es="Ganancias Esta Semana" data-ar="&#1571;&#1585;&#1576;&#1575;&#1581; &#1607;&#1584;&#1575; &#1575;&#1604;&#1571;&#1587;&#1576;&#1608;&#1593;">Profits This Week</div>
+    </div>
+    <div class="live-stat">
+      <div class="live-stat-n" id="ls-signals">847</div>
+      <div class="live-stat-l" data-en="Signals This Month" data-es="Se&ntilde;ales Este Mes" data-ar="&#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1607;&#1584;&#1575; &#1575;&#1604;&#1588;&#1607;&#1585;">Signals This Month</div>
+    </div>
+    <div class="live-stat">
+      <div class="live-stat-n">+412<sup style="font-size:14px;color:var(--gold)">pips</sup></div>
+      <div class="live-stat-l" data-en="Avg Daily Profit" data-es="Ganancia Diaria" data-ar="&#1583;&#1582;&#1604; &#1610;&#1608;&#1605;&#1610;">Avg Daily Profit</div>
+    </div>
+  </div>
+  
+</section>
+
 <!-- WHY FPG -->
 <section class="why-sec sec" id="why">
   <div class="two-col">
-    <div class="reveal-left"><div class="tag" data-en="The FPG Advantage" data-es="La Ventaja FPG" data-ar="&#1605;&#1610;&#1586;&#1577; FPG">The FPG Advantage</div><h2 class="sh2"><span data-en="6 Reasons to Choose" data-es="6 Razones para Elegir" data-ar="6 &#1571;&#1587;&#1576;&#1575;&#1576; &#1604;&#1575;&#1582;&#1578;&#1610;&#1575;&#1585;">6 Reasons to Choose</span> <em>FPG</em></h2><div class="gold-line"></div></div>
+    <div class="reveal-left"><div class="tag" data-en="The FPG Advantage" data-es="La Ventaja FPG" data-ar="&#1605;&#1610;&#1586;&#1577; FPG">The FPG Advantage</div><h2 class="sh2"><span data-en="3 Reasons to Choose" data-es="3 Razones para Elegir" data-ar="3 &#1571;&#1587;&#1576;&#1575;&#1576; &#1604;&#1575;&#1582;&#1578;&#1610;&#1575;&#1585;">3 Reasons to Choose</span> <em>FPG</em></h2><div class="gold-line"></div></div>
     <p class="sec-sub reveal-right" data-en="The difference between staying broke and building real wealth is choosing the right platform." data-es="La diferencia entre quedarse sin dinero y construir riqueza real es elegir la plataforma correcta." data-ar="&#1575;&#1604;&#1601;&#1585;&#1602; &#1576;&#1610;&#1606; &#1575;&#1604;&#1576;&#1602;&#1575;&#1569; &#1605;&#1601;&#1604;&#1587;&#1575;&#1611; &#1608;&#1576;&#1606;&#1575;&#1569; &#1579;&#1585;&#1608;&#1577; &#1581;&#1602;&#1610;&#1602;&#1610;&#1577; &#1607;&#1608; &#1575;&#1582;&#1578;&#1610;&#1575;&#1585; &#1575;&#1604;&#1605;&#1606;&#1589;&#1577; &#1575;&#1604;&#1589;&#1581;&#1610;&#1581;&#1577;.">The difference between staying broke and building real wealth is choosing the right platform.</p>
   </div>
   <div class="why-grid">
-    <div class="wc reveal" data-d="1"><div class="wc-num">01</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div class="wc-t" data-en="Regulated &amp; Trustworthy" data-es="Regulado y Confiable" data-ar="&#1605;&#1608;&#1579;&#1608;&#1602; &#1608;&#1605;&#1585;&#1582;&#1589;">Regulated &amp; Trustworthy</div><div class="wc-b" data-en="Licensed by VFSC, FSASVG, and ASIC &mdash; three of the world's top regulators protecting your money." data-es="Licenciado por VFSC, FSASVG y ASIC &mdash; tres de los mejores reguladores del mundo." data-ar="&#1605;&#1585;&#1582;&#1589; &#1605;&#1606; VFSC &#1608;FSASVG &#1608;ASIC &mdash; &#1579;&#1604;&#1575;&#1579;&#1577; &#1605;&#1606; &#1571;&#1603;&#1576;&#1585; &#1575;&#1604;&#1580;&#1607;&#1575;&#1578; &#1575;&#1604;&#1578;&#1606;&#1592;&#1610;&#1605;&#1610;&#1577; &#1601;&#1610; &#1575;&#1604;&#1593;&#1575;&#1604;&#1605;.">Licensed by VFSC, FSASVG, and ASIC &mdash; three of the world's top regulators protecting your money.</div></div>
-    <div class="wc reveal" data-d="2"><div class="wc-num">02</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div><div class="wc-t" data-en="100% Transparent" data-es="100% Transparente" data-ar="&#1588;&#1601;&#1575;&#1601;&#1610;&#1577; 100%">100% Transparent</div><div class="wc-b" data-en="No hidden fees, no manipulation. Every trade is fully visible. We profit when you profit." data-es="Sin tarifas ocultas. Cada operaci&oacute;n es completamente visible. Ganamos cuando t&uacute; ganas." data-ar="&#1604;&#1575; &#1585;&#1587;&#1608;&#1605; &#1582;&#1601;&#1610;&#1577;. &#1603;&#1604; &#1589;&#1601;&#1602;&#1577; &#1605;&#1585;&#1574;&#1610;&#1577; &#1576;&#1575;&#1604;&#1603;&#1575;&#1605;&#1604;. &#1606;&#1585;&#1576;&#1581; &#1593;&#1606;&#1583;&#1605;&#1575; &#1578;&#1585;&#1576;&#1581; &#1571;&#1606;&#1578;.">No hidden fees, no manipulation. Every trade is fully visible. We profit when you profit.</div></div>
-    <div class="wc reveal" data-d="3"><div class="wc-num">03</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div><div class="wc-t" data-en="Maximised Returns" data-es="Rendimientos M&aacute;ximos" data-ar="&#1593;&#1608;&#1575;&#1574;&#1583; &#1605;&#1615;&#1593;&#1592;&#1617;&#1605;&#1577;">Maximised Returns</div><div class="wc-b" data-en="Our D5 risk framework grows your portfolio while protecting capital. High returns without reckless exposure." data-es="Nuestro marco D5 hace crecer tu cartera protegiendo el capital. Altos rendimientos sin exposici&oacute;n imprudente." data-ar="&#1573;&#1591;&#1575;&#1585; &#1575;&#1604;&#1605;&#1582;&#1575;&#1591;&#1585; D5 &#1610;&#1606;&#1605;&#1610; &#1605;&#1581;&#1601;&#1592;&#1578;&#1603; &#1605;&#1593; &#1581;&#1605;&#1575;&#1610;&#1577; &#1585;&#1571;&#1587; &#1575;&#1604;&#1605;&#1575;&#1604;.">Our D5 risk framework grows your portfolio while protecting capital. High returns without reckless exposure.</div></div>
-    <div class="wc reveal" data-d="1"><div class="wc-num">04</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M7 8l3 3 2-2 3 3"/></svg></div><div class="wc-t" data-en="Proven Trading System" data-es="Sistema de Trading Probado" data-ar="&#1606;&#1592;&#1575;&#1605; &#1578;&#1583;&#1575;&#1608;&#1604; &#1605;&#1615;&#1580;&#1614;&#1585;&#1617;&#1576;">Proven Trading System</div><div class="wc-b" data-en="D5 PAMM + Copy Trading runs 24/7 with zero manual effort. Built on years of institutional expertise." data-es="D5 PAMM + Copy Trading funciona 24/7 sin esfuerzo manual. Construido sobre a&ntilde;os de experiencia." data-ar="D5 PAMM + &#1575;&#1604;&#1578;&#1583;&#1575;&#1608;&#1604; &#1575;&#1604;&#1606;&#1587;&#1582;&#1610; &#1610;&#1593;&#1605;&#1604; 24/7 &#1583;&#1608;&#1606; &#1580;&#1607;&#1583; &#1610;&#1583;&#1608;&#1610;.">D5 PAMM + Copy Trading runs 24/7 with zero manual effort. Built on years of institutional expertise.</div></div>
-    <div class="wc reveal" data-d="2"><div class="wc-num">05</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="wc-t" data-en="World-Class Team" data-es="Equipo de Clase Mundial" data-ar="&#1601;&#1585;&#1610;&#1602; &#1593;&#1575;&#1604;&#1605;&#1610; &#1575;&#1604;&#1605;&#1587;&#1578;&#1608;&#1609;">World-Class Team</div><div class="wc-b" data-en="Our mentors are active traders, not just teachers. Decades of real market experience behind you." data-es="Nuestros mentores son traders activos, no solo profesores. D&eacute;cadas de experiencia real." data-ar="&#1605;&#1585;&#1588;&#1583;&#1608;&#1606;&#1575; &#1605;&#1578;&#1583;&#1575;&#1608;&#1604;&#1608;&#1606; &#1606;&#1588;&#1591;&#1608;&#1606;&#1548; &#1604;&#1610;&#1587;&#1608;&#1575; &#1605;&#1580;&#1585;&#1583; &#1605;&#1593;&#1604;&#1605;&#1610;&#1606;.">Our mentors are active traders, not just teachers. Decades of real market experience behind you.</div></div>
-    <div class="wc reveal" data-d="3"><div class="wc-num">06</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055"/></svg></div><div class="wc-t" data-en="Education That Works" data-es="Educaci&oacute;n que Funciona" data-ar="&#1578;&#1593;&#1604;&#1610;&#1605; &#1601;&#1593;&#1617;&#1575;&#1604; &#1581;&#1602;&#1575;&#1611;">Education That Works</div><div class="wc-b" data-en="From zero to confident trader in weeks, not years &mdash; with the right guidance behind you." data-es="De cero a trader seguro en semanas, no a&ntilde;os &mdash; con la orientaci&oacute;n correcta." data-ar="&#1605;&#1606; &#1589;&#1601;&#1585; &#1573;&#1604;&#1609; &#1605;&#1578;&#1583;&#1575;&#1608;&#1604; &#1608;&#1575;&#1579;&#1602; &#1601;&#1610; &#1571;&#1587;&#1575;&#1576;&#1610;&#1593;&#1548; &#1604;&#1610;&#1587; &#1587;&#1606;&#1608;&#1575;&#1578;.">From zero to confident trader in weeks, not years &mdash; with the right guidance behind you.</div></div>
+    
+    <div class="wc reveal" data-d="2"><div class="wc-num">01</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></div><div class="wc-t" data-en="100% Transparent" data-es="100% Transparente" data-ar="&#1588;&#1601;&#1575;&#1601;&#1610;&#1577; 100%">100% Transparent</div><div class="wc-b" data-en="No hidden fees, no manipulation. Every trade is fully visible. We profit when you profit." data-es="Sin tarifas ocultas. Cada operaci&oacute;n es completamente visible. Ganamos cuando t&uacute; ganas." data-ar="&#1604;&#1575; &#1585;&#1587;&#1608;&#1605; &#1582;&#1601;&#1610;&#1577;. &#1603;&#1604; &#1589;&#1601;&#1602;&#1577; &#1605;&#1585;&#1574;&#1610;&#1577; &#1576;&#1575;&#1604;&#1603;&#1575;&#1605;&#1604;. &#1606;&#1585;&#1576;&#1581; &#1593;&#1606;&#1583;&#1605;&#1575; &#1578;&#1585;&#1576;&#1581; &#1571;&#1606;&#1578;.">No hidden fees, no manipulation. Every trade is fully visible. We profit when you profit.</div></div>
+    
+    <div class="wc reveal" data-d="1"><div class="wc-num">02</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M7 8l3 3 2-2 3 3"/></svg></div><div class="wc-t" data-en="Proven Trading System" data-es="Sistema de Trading Probado" data-ar="&#1606;&#1592;&#1575;&#1605; &#1578;&#1583;&#1575;&#1608;&#1604; &#1605;&#1615;&#1580;&#1614;&#1585;&#1617;&#1576;">Proven Trading System</div><div class="wc-b" data-en="D5 PAMM + Copy Trading runs 24/7 with zero manual effort. Built on years of institutional expertise." data-es="D5 PAMM + Copy Trading funciona 24/7 sin esfuerzo manual. Construido sobre a&ntilde;os de experiencia." data-ar="D5 PAMM + &#1575;&#1604;&#1578;&#1583;&#1575;&#1608;&#1604; &#1575;&#1604;&#1606;&#1587;&#1582;&#1610; &#1610;&#1593;&#1605;&#1604; 24/7 &#1583;&#1608;&#1606; &#1580;&#1607;&#1583; &#1610;&#1583;&#1608;&#1610;.">D5 PAMM + Copy Trading runs 24/7 with zero manual effort. Built on years of institutional expertise.</div></div>
+    <div class="wc reveal" data-d="2"><div class="wc-num">03</div><div class="wc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A264" stroke-width="1.5" stroke-linecap="round"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><div class="wc-t" data-en="World-Class Team" data-es="Equipo de Clase Mundial" data-ar="&#1601;&#1585;&#1610;&#1602; &#1593;&#1575;&#1604;&#1605;&#1610; &#1575;&#1604;&#1605;&#1587;&#1578;&#1608;&#1609;">World-Class Team</div><div class="wc-b" data-en="Our mentors are active traders, not just teachers. Decades of real market experience behind you." data-es="Nuestros mentores son traders activos, no solo profesores. D&eacute;cadas de experiencia real." data-ar="&#1605;&#1585;&#1588;&#1583;&#1608;&#1606;&#1575; &#1605;&#1578;&#1583;&#1575;&#1608;&#1604;&#1608;&#1606; &#1606;&#1588;&#1591;&#1608;&#1606;&#1548; &#1604;&#1610;&#1587;&#1608;&#1575; &#1605;&#1580;&#1585;&#1583; &#1605;&#1593;&#1604;&#1605;&#1610;&#1606;.">Our mentors are active traders, not just teachers. Decades of real market experience behind you.</div></div>
+    
   </div>
 </section>
 
@@ -525,7 +584,7 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
   </h2>
   <p class="cta-sub reveal" data-d="2" data-en="Thousands of traders started exactly where you are now.<br>The only difference? They clicked the button. <span>Will you?</span>" data-es="Miles de traders empezaron exactamente donde est&aacute;s t&uacute; ahora.<br>&#191;La &uacute;nica diferencia? Ellos hicieron clic. <span>&#191;Lo har&aacute;s t&uacute;?</span>" data-ar="&#1570;&#1604;&#1575;&#1601; &#1575;&#1604;&#1605;&#1578;&#1583;&#1575;&#1608;&#1604;&#1610;&#1606; &#1576;&#1583;&#1571;&#1608;&#1575; &#1605;&#1606; &#1606;&#1601;&#1587; &#1605;&#1603;&#1575;&#1606;&#1603; &#1578;&#1605;&#1575;&#1605;&#1575;&#1611;.<br>&#1575;&#1604;&#1601;&#1585;&#1602; &#1575;&#1604;&#1608;&#1581;&#1610;&#1583;&#1567; &#1571;&#1606;&#1607;&#1605; &#1590;&#1594;&#1591;&#1608;&#1575; &#1575;&#1604;&#1586;&#1585;. <span>&#1607;&#1604; &#1587;&#1578;&#1601;&#1593;&#1604; &#1584;&#1604;&#1603;&#1567;</span>">Thousands of traders started exactly where you are now.<br>The only difference? They clicked the button. <span>Will you?</span></p>
   <div class="cta-wrap reveal" data-d="3">
-    <div class="urgency-strip" data-en="&#9889; Limited spots &mdash; Act now" data-es="&#9889; Plazas limitadas &mdash; Actua ahora" data-ar="&#9889; &#1605;&#1602;&#1575;&#1593;&#1583; &#1605;&#1581;&#1583;&#1608;&#1583;&#1577; &mdash; &#1578;&#1589;&#1585;&#1617;&#1601; &#1575;&#1604;&#1570;&#1606;">&#9889; Limited spots &mdash; Act now</div>
+    <div class="urgency-strip" data-en="&#9889; Only <strong>47</strong> free memberships left this week" data-es="&#9889; Solo <strong>47</strong> membres&iacute;as gratis esta semana" data-ar="&#9889; &#1601;&#1602;&#1591; <strong>47</strong> &#1593;&#1590;&#1608;&#1610;&#1577; &#1605;&#1580;&#1575;&#1606;&#1610;&#1577; &#1607;&#1584;&#1575; &#1575;&#1604;&#1571;&#1587;&#1576;&#1608;&#1593;">&#9889; Only <strong>47</strong> free memberships left this week</div>
     <br>
     <button class="big-btn" onclick="openModal()">
       <span data-en="Register Free Now &mdash; Start Today" data-es="Reg&iacute;strate Gratis &mdash; Empieza Hoy" data-ar="&#1587;&#1580;&#1617;&#1604; &#1605;&#1580;&#1575;&#1606;&#1575;&#1611; &#1575;&#1604;&#1570;&#1606; &mdash; &#1575;&#1576;&#1583;&#1571; &#1575;&#1604;&#1610;&#1608;&#1605;">Register Free Now &mdash; Start Today</span>
@@ -799,6 +858,22 @@ for(var i=20;i<28;i++){c1[i].c+=((i-19)*4);c1[i].h=Math.max(c1[i].h,c1[i].c+5);}
 drawChart('canvas1', { candles:c1, ma20:computeMA(c1,5), ma50:computeMA(c1,12), buys:[8,21], dec:2 });
 var c2 = genCandles(1.0820, 0.0012, 28, 0);
 drawChart('canvas2', { candles:c2, resistance:1.0880, support:1.0815, zone:0.0006, sells:[6,19], dec:4 });
+
+
+// LIVE STAT COUNTERS — gentle tick
+var traderCount = 3124, signalCount = 847;
+setInterval(function(){
+  if (Math.random() > 0.4) {
+    traderCount++;
+    var el = document.getElementById('ls-traders');
+    if (el) el.textContent = traderCount.toLocaleString();
+  }
+  if (Math.random() > 0.7) {
+    signalCount++;
+    var el2 = document.getElementById('ls-signals');
+    if (el2) el2.textContent = signalCount.toLocaleString();
+  }
+}, 3000);
 
 // Auto-detect lang from URL
 (function() {
