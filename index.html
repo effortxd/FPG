@@ -312,9 +312,235 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
   .big-btn{padding:20px 36px;font-size:14px;width:100%;justify-content:center}
   .cta-sec{padding:100px 24px}
 }
+
+/* ═════════ CONVERSION JUICE ═════════ */
+
+/* Top urgency bar */
+.urg-bar{
+  position:fixed;top:0;left:0;right:0;z-index:400;
+  background:linear-gradient(90deg,#9d1f2c 0%,#c8102e 50%,#9d1f2c 100%);
+  background-size:200% 100%;
+  animation:urgshim 3s linear infinite;
+  color:#fff;padding:9px 24px;
+  display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+  font-size:13px;font-weight:600;letter-spacing:.04em;
+  box-shadow:0 2px 12px rgba(200,16,46,.4);
+}
+@keyframes urgshim{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.urg-bar .urg-flame{font-size:15px;animation:flame 1.2s ease-in-out infinite alternate}
+@keyframes flame{from{transform:scale(1)}to{transform:scale(1.15)}}
+.urg-bar .urg-time{
+  font-family:'JetBrains Mono','Courier New',monospace;
+  background:rgba(0,0,0,.3);
+  padding:3px 9px;border-radius:3px;
+  font-weight:700;letter-spacing:.05em;font-size:13px;
+  border:1px solid rgba(255,255,255,.15);
+}
+.urg-bar .urg-spots{color:#ffe8a3;font-weight:700}
+.urg-bar .urg-spots strong{color:#fff;font-size:15px}
+.urg-close{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  background:transparent;border:none;color:rgba(255,255,255,.6);
+  cursor:pointer;font-size:16px;padding:4px 8px;line-height:1;
+}
+.urg-close:hover{color:#fff}
+body.has-urg nav{top:42px}
+body.has-urg{padding-top:42px}
+
+/* Sticky bottom CTA */
+.scta{
+  position:fixed;bottom:0;left:0;right:0;z-index:280;
+  background:linear-gradient(180deg,rgba(7,7,7,.6) 0%,rgba(7,7,7,.98) 40%);
+  backdrop-filter:blur(16px);
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  border-top:1px solid rgba(201,162,100,.25);
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.2,.8,.3,1);
+}
+.scta.show{transform:translateY(0)}
+.scta-l{flex:1;min-width:0}
+.scta-l-1{font-size:14px;font-weight:700;color:#fff;line-height:1.2;margin-bottom:2px}
+.scta-l-1 .gold{color:var(--gold2)}
+.scta-l-2{font-size:11px;color:var(--muted);letter-spacing:.04em}
+.scta-l-2 .pulse-d{display:inline-block;width:6px;height:6px;border-radius:50%;background:#22c55e;margin-right:5px;animation:pdot 1.4s infinite}
+@keyframes pdot{50%{opacity:.3}}
+.scta-btn{
+  background:linear-gradient(135deg,#c8102e,#9d1f2c);
+  color:#fff;border:none;padding:13px 22px;
+  font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  cursor:pointer;white-space:nowrap;
+  box-shadow:0 6px 18px rgba(200,16,46,.4);
+  transition:transform .2s,box-shadow .2s;
+  animation:sctapulse 2.4s ease-in-out infinite;
+}
+@keyframes sctapulse{0%,100%{box-shadow:0 6px 18px rgba(200,16,46,.4)}50%{box-shadow:0 6px 28px rgba(200,16,46,.7)}}
+.scta-btn:hover{transform:translateY(-2px)}
+
+/* Live join toasts */
+.toast-host{position:fixed;left:20px;bottom:90px;z-index:270;display:flex;flex-direction:column-reverse;gap:10px;pointer-events:none}
+.toast{
+  background:rgba(15,15,15,.96);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(201,162,100,.3);
+  border-left:3px solid #22c55e;
+  padding:12px 16px;
+  display:flex;align-items:center;gap:12px;
+  min-width:280px;max-width:340px;
+  box-shadow:0 12px 32px rgba(0,0,0,.5);
+  transform:translateX(-120%);opacity:0;
+  transition:transform .45s cubic-bezier(.2,.8,.3,1),opacity .3s;
+  pointer-events:auto;
+}
+.toast.show{transform:translateX(0);opacity:1}
+.toast-av{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#0a0a0c;font-weight:700;font-size:14px;
+  font-family:'Playfair Display',serif;
+}
+.toast-body{flex:1;min-width:0}
+.toast-t{font-size:13px;color:#fff;line-height:1.35;font-weight:500}
+.toast-t strong{color:var(--gold2)}
+.toast-s{font-size:11px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:4px}
+.toast-s .tdot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pdot 1.4s infinite}
+
+/* Exit intent popup */
+.exit-bg{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,.88);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+}
+.exit-bg.show{display:flex;animation:efade .25s ease}
+@keyframes efade{from{opacity:0}to{opacity:1}}
+.exit-pop{
+  position:relative;background:linear-gradient(160deg,#0f0f12,#1a1a1f);
+  border:2px solid var(--gold);
+  max-width:480px;width:100%;
+  padding:42px 32px 32px;text-align:center;
+  box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 80px rgba(201,162,100,.15);
+  animation:epop .4s cubic-bezier(.2,.9,.3,1.2);
+}
+@keyframes epop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.exit-x{
+  position:absolute;top:12px;right:12px;background:transparent;border:none;
+  color:rgba(255,255,255,.5);width:32px;height:32px;font-size:20px;cursor:pointer;
+}
+.exit-x:hover{color:#fff}
+.exit-flame{font-size:42px;margin-bottom:10px}
+.exit-h{
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;line-height:1.15;color:#fff;
+  margin-bottom:10px;
+}
+.exit-h em{color:var(--gold2);font-style:italic}
+.exit-sub{font-size:15px;color:var(--muted);line-height:1.5;margin-bottom:24px}
+.exit-sub strong{color:#fff}
+.exit-btn{
+  background:linear-gradient(135deg,#c8102e,#9d1f2c);
+  color:#fff;border:none;width:100%;padding:17px 22px;
+  font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;margin-bottom:10px;
+  box-shadow:0 8px 24px rgba(200,16,46,.45);
+  transition:transform .2s;
+}
+.exit-btn:hover{transform:translateY(-2px)}
+.exit-skip{
+  display:block;background:transparent;border:none;color:rgba(255,255,255,.4);
+  font-size:12px;cursor:pointer;text-decoration:underline;width:100%;padding:6px;
+}
+.exit-skip:hover{color:rgba(255,255,255,.7)}
+
+/* Hero scarcity element */
+.scarcity-strip{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(34,197,94,.08);
+  border:1px solid rgba(34,197,94,.3);
+  padding:8px 14px;margin-top:14px;margin-bottom:6px;
+  font-size:12px;letter-spacing:.04em;
+}
+.scarcity-strip .sc-bar{
+  flex:1;min-width:120px;height:5px;
+  background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;
+  position:relative;
+}
+.scarcity-strip .sc-fill{
+  height:100%;
+  background:linear-gradient(90deg,#22c55e,#fbbf24,#ef4444);
+  width:53%;border-radius:3px;transition:width 1s ease;
+}
+.scarcity-strip .sc-text{font-weight:600;color:#fff;white-space:nowrap}
+.scarcity-strip .sc-text strong{color:#fbbf24}
+
+/* Bottom padding so sticky CTA never hides content */
+body{padding-bottom:78px}
+@media(max-width:780px){body{padding-bottom:74px}}
+
+/* Mobile tweaks */
+@media(max-width:780px){
+  .urg-bar{padding:7px 36px 7px 12px;font-size:11px;gap:10px}
+  .urg-bar .urg-time{font-size:11px;padding:2px 6px}
+  body.has-urg nav{top:38px}
+  body.has-urg{padding-top:38px}
+  .toast-host{left:10px;right:10px;bottom:84px}
+  .toast{min-width:0;width:100%;max-width:none}
+  .scta{padding:10px 14px;gap:10px}
+  .scta-l-1{font-size:12.5px}
+  .scta-l-2{font-size:10px}
+  .scta-btn{padding:11px 14px;font-size:11.5px}
+  .exit-pop{padding:36px 22px 26px}
+  .exit-h{font-size:23px}
+  .exit-sub{font-size:13.5px}
+}
+
 </style>
 </head>
-<body>
+<body class="has-urg">
+
+<!-- TOP URGENCY BAR -->
+<div class="urg-bar" id="urgBar">
+  <span class="urg-flame">🔥</span>
+  <span data-en="Free onboarding closes in" data-es="Onboarding gratis cierra en" data-ar="إغلاق التسجيل المجاني في">Free onboarding closes in</span>
+  <span class="urg-time" id="urgTime">--d --h --m --s</span>
+  <span class="urg-spots"><span data-en="Only" data-es="Solo" data-ar="فقط">Only</span> <strong id="urgSpots">47</strong>/100 <span data-en="slots left" data-es="cupos restantes" data-ar="أماكن متبقية">slots left</span></span>
+  <button class="urg-close" onclick="closeUrgBar()" aria-label="Close">✕</button>
+</div>
+
+<!-- LIVE JOIN TOAST CONTAINER -->
+<div class="toast-host" id="toastHost"></div>
+
+<!-- STICKY BOTTOM CTA -->
+<div class="scta" id="scta">
+  <div class="scta-l">
+    <div class="scta-l-1"><span data-en="Get the" data-es="Obtén las" data-ar="احصل على">Get the</span> <span class="gold" data-en="3 Free Tools" data-es="3 Herramientas Gratis" data-ar="3 أدوات مجانية">3 Free Tools</span> <span data-en="now" data-es="ahora" data-ar="الآن">now</span></div>
+    <div class="scta-l-2"><span class="pulse-d"></span><span data-en="No credit card · 60 seconds" data-es="Sin tarjeta · 60 segundos" data-ar="بدون بطاقة · 60 ثانية">No credit card · 60 seconds</span></div>
+  </div>
+  <button class="scta-btn" onclick="openModal()">
+    <span data-en="Claim Free Access →" data-es="Reclamar Gratis →" data-ar="احصل مجاناً →">Claim Free Access →</span>
+  </button>
+</div>
+
+<!-- EXIT INTENT POPUP -->
+<div class="exit-bg" id="exitBg" onclick="if(event.target===this)closeExit()">
+  <div class="exit-pop">
+    <button class="exit-x" onclick="closeExit()">✕</button>
+    <div class="exit-flame">🔥</div>
+    <h3 class="exit-h">
+      <span data-en="Wait —" data-es="Espera —" data-ar="انتظر —">Wait —</span>
+      <em><span data-en="Don't Leave Empty Handed" data-es="No Te Vayas Sin Nada" data-ar="لا تغادر بدون شيء">Don't Leave Empty Handed</span></em>
+    </h3>
+    <p class="exit-sub" data-en="You're <strong>60 seconds</strong> away from getting <strong style='color:#fbbf24'>$297/month worth</strong> of pro indicators, guides, and live signals — completely free." data-es="Estás a <strong>60 segundos</strong> de obtener <strong style='color:#fbbf24'>$297/mes</strong> en indicadores, guías y señales pro — completamente gratis." data-ar="أنت على بُعد <strong>60 ثانية</strong> من الحصول على ما قيمته <strong style='color:#fbbf24'>$297/شهرياً</strong> من المؤشرات والأدلة والإشارات المباشرة — مجاناً تماماً.">
+      You're <strong>60 seconds</strong> away from getting <strong style="color:#fbbf24">$297/month worth</strong> of pro indicators, guides, and live signals — completely free.
+    </p>
+    <button class="exit-btn" onclick="closeExit();openModal()">
+      <span data-en="Yes — Claim My Free Access" data-es="Sí — Reclamar Mi Acceso Gratis" data-ar="نعم — احصل على وصولي المجاني">Yes — Claim My Free Access</span>
+    </button>
+    <button class="exit-skip" onclick="closeExit()" data-en="No thanks, I'll keep losing trades" data-es="No gracias, seguiré perdiendo" data-ar="لا شكراً، سأستمر في الخسارة">No thanks, I'll keep losing trades</button>
+  </div>
+</div>
+
+
 
 <!-- MODAL -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
@@ -387,7 +613,7 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
   <div class="hero-left">
     <div class="badge" style="background:rgba(200,16,46,.1);border-color:rgba(200,16,46,.3);color:#ef6060"><span class="badge-dot" style="background:#ef6060"></span><span data-en="🔥 FREE Signals & Indicators Inside" data-es="🔥 Señales e Indicadores GRATIS" data-ar="🔥 &#1573;&#1588;&#1575;&#1585;&#1575;&#1578; &#1608;&#1605;&#1572;&#1588;&#1585;&#1575;&#1578; &#1605;&#1580;&#1575;&#1606;&#1610;&#1577;">🔥 FREE Signals &amp; Indicators Inside</span></div>
     <h1>
-      <span data-en="Stop Losing." data-es="Deja de Perder." data-ar="&#1578;&#1608;&#1602;&#1617;&#1601; &#1575;&#1604;&#1582;&#1587;&#1575;&#1574;&#1585;.">Stop Losing.</span><br>
+      <span data-en="Tired of Losing?" data-es="¿Cansado de Perder?" data-ar="&#1605;&#1604;&#1604;&#1578; &#1605;&#1606; &#1575;&#1604;&#1582;&#1587;&#1575;&#1574;&#1585;&#1567;">Tired of Losing?</span><br>
       <em><span data-en="Start Copying" data-es="Empieza a Copiar" data-ar="&#1575;&#1576;&#1583;&#1571; &#1576;&#1606;&#1587;&#1582;">Start Copying</span></em><br>
       <strong><span data-en="The Pros." data-es="A Los Pros." data-ar="&#1575;&#1604;&#1605;&#1581;&#1578;&#1585;&#1601;&#1610;&#1606;.">The Pros.</span></strong>
     </h1>
@@ -398,12 +624,16 @@ footer{background:var(--d1);border-top:1px solid rgba(201,162,100,.08);padding:4
         <span data-en="Register Free &mdash; 60 Seconds" data-es="Reg&iacute;strate Gratis &mdash; 60 Segundos" data-ar="&#1587;&#1580;&#1617;&#1604; &#1605;&#1580;&#1575;&#1606;&#1575;&#1611; &mdash; 60 &#1579;&#1575;&#1606;&#1610;&#1577;">Register Free &mdash; 60 Seconds</span>
         <span class="btn-arr"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5h6M5 2l3 3-3 3" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg></span>
       </button>
-      <div class="urgency" data-en="No credit card required. Takes less than 60 seconds." data-es="Sin tarjeta de cr&eacute;dito. Menos de 60 segundos." data-ar="&#1604;&#1575; &#1578;&#1581;&#1578;&#1575;&#1580; &#1576;&#1591;&#1575;&#1602;&#1577; &#1575;&#1574;&#1578;&#1605;&#1575;&#1606;. &#1571;&#1602;&#1604; &#1605;&#1606; 60 &#1579;&#1575;&#1606;&#1610;&#1577;.">No credit card required. Takes less than 60 seconds.</div>
+      <div class="urgency" data-en="✓ No credit card  ✓ No spam  ✓ Takes 60 seconds  ✓ Cancel anytime" data-es="✓ Sin tarjeta  ✓ Sin spam  ✓ 60 segundos  ✓ Cancela siempre" data-ar="&#1576;&#1583;&#1608;&#1606; &#1576;&#1591;&#1575;&#1602;&#1577; &#1575;&#1574;&#1578;&#1605;&#1575;&#1606; &#8226; &#1576;&#1583;&#1608;&#1606; &#1573;&#1586;&#1593;&#1575;&#1580; &#8226; 60 &#1579;&#1575;&#1606;&#1610;&#1577;">✓ No credit card  ✓ No spam  ✓ Takes 60 seconds  ✓ Cancel anytime</div>
     </div>
     <div class="hero-kpis">
       <div class="kpi"><div class="kpi-n">87<sup>%</sup></div><div class="kpi-l" data-en="Avg Signal Win Rate" data-es="Tasa Promedio de &Eacute;xito" data-ar="&#1605;&#1593;&#1583;&#1604; &#1575;&#1604;&#1601;&#1608;&#1586;">Avg Signal Win Rate</div></div>
       <div class="kpi"><div class="kpi-n">+4,200<sup>pips</sup></div><div class="kpi-l" data-en="Last 30 Days" data-es="&Uacute;ltimos 30 D&iacute;as" data-ar="&#1570;&#1582;&#1585; 30 &#1610;&#1608;&#1605;&#1575;&#1611;">Last 30 Days</div></div>
       <div class="kpi"><div class="kpi-n">12.4K<sup>+</sup></div><div class="kpi-l" data-en="Active Members" data-es="Miembros Activos" data-ar="&#1571;&#1593;&#1590;&#1575;&#1569; &#1606;&#1588;&#1591;&#1610;&#1606;">Active Members</div></div>
+    </div>
+    <div class="scarcity-strip">
+      <span class="sc-text">🔥 <span data-en="This week" data-es="Esta semana" data-ar="هذا الأسبوع">This week</span>: <strong id="hScSpots">47</strong>/100 <span data-en="free slots" data-es="cupos gratis" data-ar="أماكن مجانية">free slots</span></span>
+      <div class="sc-bar"><div class="sc-fill" id="hScFill"></div></div>
     </div>
   </div>
   <div class="hero-right">
@@ -815,5 +1045,188 @@ setInterval(function(){
   if (p === 'ar' || p === 'es') { if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setLang(p);});}else{setLang(p);} }
 })();
 </script>
+
+<script>
+/* ═════════ CONVERSION JUICE JS ═════════ */
+(function(){
+  // ── 1. Top urgency bar countdown — resets weekly Sunday 23:59 UTC ─────
+  function getDeadline(){
+    var now = new Date();
+    var d = new Date(now);
+    d.setUTCHours(23,59,59,0);
+    var dow = d.getUTCDay(); // 0=Sun
+    var until = (dow===0 ? 0 : 7-dow);
+    d.setUTCDate(d.getUTCDate() + until);
+    return d.getTime();
+  }
+  var DEAD = getDeadline();
+  function tickCountdown(){
+    var el = document.getElementById('urgTime');
+    if(!el) return;
+    var ms = DEAD - Date.now();
+    if(ms <= 0){ DEAD = getDeadline(); ms = DEAD - Date.now(); }
+    var d = Math.floor(ms/86400000);
+    var h = Math.floor(ms/3600000)%24;
+    var m = Math.floor(ms/60000)%60;
+    var s = Math.floor(ms/1000)%60;
+    var pad = function(n){return n<10?'0'+n:n};
+    el.textContent = d+'d '+pad(h)+'h '+pad(m)+'m '+pad(s)+'s';
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  // ── 2. Spots remaining counter — slowly decreases through the week ──
+  function calcSpots(){
+    // Anchor seed by the week so all visitors this week see roughly same number
+    var weekKey = Math.floor(Date.now()/(7*24*3600*1000));
+    // Decrease through the week from 87 → 12
+    var dayOfWeek = new Date().getUTCDay();
+    var hourOfDay = new Date().getUTCHours();
+    var pct = (dayOfWeek*24 + hourOfDay) / (7*24);
+    var base = Math.max(12, Math.round(87 - pct*70));
+    // tiny micro-jitter
+    var jitter = ((weekKey + Math.floor(Date.now()/600000)) * 13) % 4;
+    return Math.max(8, base - jitter);
+  }
+  function updateSpots(){
+    var n = calcSpots();
+    var elTop = document.getElementById('urgSpots');
+    var elHero = document.getElementById('hScSpots');
+    var fill = document.getElementById('hScFill');
+    if(elTop) elTop.textContent = n;
+    if(elHero) elHero.textContent = n;
+    if(fill) fill.style.width = n + '%';
+  }
+  updateSpots();
+  setInterval(updateSpots, 30000);
+
+  // ── 3. Close urgency bar (sticky, remembers via memory only) ─────────
+  window.closeUrgBar = function(){
+    var b = document.getElementById('urgBar');
+    if(b){ b.style.display='none'; document.body.classList.remove('has-urg'); }
+  };
+
+  // ── 4. Sticky bottom CTA — show after scrolling past hero ────────────
+  var scta = document.getElementById('scta');
+  var lastY = 0, sctaShown = false;
+  function checkScta(){
+    var y = window.scrollY || window.pageYOffset;
+    var trigger = window.innerHeight * 0.6;
+    if(y > trigger && !sctaShown){
+      scta.classList.add('show'); sctaShown = true;
+    }
+    lastY = y;
+  }
+  window.addEventListener('scroll', checkScta, {passive:true});
+  checkScta();
+
+  // ── 5. Live join toast notifications ─────────────────────────────────
+  var TOASTS = [
+    {n:'Ahmed', c:'Dubai, UAE', i:'A'},
+    {n:'Maria', c:'Madrid, Spain', i:'M'},
+    {n:'Liam',  c:'London, UK',  i:'L'},
+    {n:'Sofia', c:'Mexico City', i:'S'},
+    {n:'Yuki',  c:'Tokyo, Japan',i:'Y'},
+    {n:'Carlos',c:'Buenos Aires',i:'C'},
+    {n:'Aisha', c:'Kuala Lumpur',i:'A'},
+    {n:'David', c:'Sydney, AU',  i:'D'},
+    {n:'Hassan',c:'Riyadh, KSA', i:'H'},
+    {n:'Elena', c:'Milan, Italy',i:'E'},
+    {n:'Jamal', c:'Cairo, Egypt',i:'J'},
+    {n:'Priya', c:'Mumbai, IN',  i:'P'},
+    {n:'Lucas', c:'São Paulo',   i:'L'},
+    {n:'Fatima',c:'Istanbul, TR',i:'F'},
+    {n:'Omar',  c:'Doha, Qatar', i:'O'},
+    {n:'Anna',  c:'Berlin, DE',  i:'A'}
+  ];
+  var ACTIONS_EN = ['just claimed free access', 'just joined FPG', 'is downloading the indicators', 'just got their free signals'];
+  var ACTIONS_ES = ['acaba de obtener acceso gratis', 'se acaba de unir a FPG', 'está descargando los indicadores', 'acaba de obtener sus señales gratis'];
+  var ACTIONS_AR = ['سجّل للتو مجاناً', 'انضم للتو إلى FPG', 'يقوم بتنزيل المؤشرات', 'حصل للتو على إشاراته المجانية'];
+  var TIMES_EN = ['just now', '12 sec ago', '34 sec ago', '1 min ago', '2 min ago'];
+  var TIMES_ES = ['ahora mismo', 'hace 12 seg', 'hace 34 seg', 'hace 1 min', 'hace 2 min'];
+  var TIMES_AR = ['الآن', 'قبل 12 ثانية', 'قبل 34 ثانية', 'قبل دقيقة', 'قبل دقيقتين'];
+
+  var tIdx = 0;
+  function pickToast(){
+    var p = TOASTS[Math.floor(Math.random()*TOASTS.length)];
+    var lang = (window.currentLang || 'en');
+    var actions = lang==='es' ? ACTIONS_ES : (lang==='ar' ? ACTIONS_AR : ACTIONS_EN);
+    var times   = lang==='es' ? TIMES_ES   : (lang==='ar' ? TIMES_AR   : TIMES_EN);
+    var action = actions[Math.floor(Math.random()*actions.length)];
+    var time   = times[Math.floor(Math.random()*times.length)];
+    return {p:p, action:action, time:time};
+  }
+  function showToast(){
+    var host = document.getElementById('toastHost');
+    if(!host) return;
+    var data = pickToast();
+    var t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML =
+      '<div class="toast-av">'+data.p.i+'</div>'+
+      '<div class="toast-body">'+
+        '<div class="toast-t"><strong>'+data.p.n+'</strong> '+
+          '<span style="color:#a8a59c">'+data.action+'</span></div>'+
+        '<div class="toast-s"><span class="tdot"></span>'+data.p.c+' · '+data.time+'</div>'+
+      '</div>';
+    host.appendChild(t);
+    setTimeout(function(){t.classList.add('show')}, 50);
+    setTimeout(function(){
+      t.classList.remove('show');
+      setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t)}, 400);
+    }, 5500);
+  }
+  // First toast at 8s, then every 14-22s randomly
+  setTimeout(function startToastLoop(){
+    showToast();
+    setTimeout(startToastLoop, 14000 + Math.random()*8000);
+  }, 8000);
+
+  // ── 6. Exit intent popup ─────────────────────────────────────────────
+  var exitFired = false;
+  var exitBg = document.getElementById('exitBg');
+  function fireExit(){
+    if(exitFired) return;
+    var ov = document.getElementById('overlay');
+    if(ov && (ov.classList.contains('show') || ov.classList.contains('open') || ov.style.display === 'flex')) return;
+    exitFired = true;
+    exitBg.classList.add('show');
+    if(typeof gtag==='function') gtag('event','exit_intent_shown',{event_category:'engagement'});
+  }
+  window.closeExit = function(){
+    exitBg.classList.remove('show');
+  };
+  // Desktop: trigger on mouseleave from top edge
+  document.addEventListener('mouseleave', function(e){
+    if(e.clientY <= 5 && !exitFired) fireExit();
+  });
+  // Mobile: trigger on rapid scroll-up after meaningful engagement
+  var lastScrollY = 0, scrollUpStart = 0;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY || window.pageYOffset;
+    if(y < lastScrollY - 50 && lastScrollY > 600){
+      // Fast scroll up after engagement
+      if(!scrollUpStart) scrollUpStart = Date.now();
+      else if(Date.now() - scrollUpStart < 1200 && y < 200){
+        fireExit();
+      }
+    } else {
+      scrollUpStart = 0;
+    }
+    lastScrollY = y;
+  }, {passive:true});
+
+  // Also fire after 60s on page if user hasn't interacted with modal
+  setTimeout(function(){
+    if(!exitFired && (window.scrollY||0) > 200) fireExit();
+  }, 60000);
+
+  // ESC closes exit popup too
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') closeExit();
+  });
+})();
+</script>
+
 </body>
 </html>
